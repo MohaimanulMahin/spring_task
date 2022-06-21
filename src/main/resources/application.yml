@@ -1,0 +1,99 @@
+server:
+  port: '8000'
+spring:
+  profiles:
+    active: dev
+
+welcome:
+  message: Welcome to Employee management app
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      +base-path: /
+  endpoint:
+    restart:
+      enabled: 'true'
+    refresh:
+      enabled: 'true'
+    health:
+      enabled: 'true'
+    loggers:
+      enabled: 'true'
+  health:
+    diskspace:
+      enabled: 'true'
+    db:
+      enabled: 'true'
+  security:
+    enabled: 'false'
+  server:
+    port: '8000'
+
+
+
+
+---
+
+spring:
+  messages:
+    basename: messages
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: mahin
+    url: jdbc:mysql://localhost:3306/employee_java
+    password: root
+  jpa:
+    generate-ddl: 'true'
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+  config:
+    activate:
+      on-profile: dev
+
+---
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: mahin
+    url: jdbc:mysql://localhost:3306/employee_java_qa
+    password: root
+  jpa:
+    generate-ddl: 'true'
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+  config:
+    activate:
+      on-profile: qa
+
+
+---
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: mahin
+    url: jdbc:mysql://localhost:3306/employee_java_prod
+    password: root
+  jpa:
+    generate-ddl: 'true'
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+  config:
+    activate:
+      on-profile: prod
