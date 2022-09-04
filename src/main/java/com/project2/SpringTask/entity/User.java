@@ -22,4 +22,5 @@ public class User {
 @Past
 @ApiModelProperty(notes = "Birth date should be in the past")
   private Date birthDate;
+
 }
